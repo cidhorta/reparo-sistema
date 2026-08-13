@@ -44,10 +44,16 @@ Set-ExecutionPolicy -Scope Process Bypass
 
 ## Execução direta a partir do GitHub
 
+URL curta recomendada:
+
+```powershell
+irm https://raw.githubusercontent.com/cidhorta/reparo-sistema/main/windows.ps1 | iex
+```
+
 Forma direta, adequada apenas quando a versão publicada já foi revisada:
 
 ```powershell
-irm https://raw.githubusercontent.com/cidhorta/reparo-sistema/main/ReparoSistema/Windows/ReparoSistema-Windows.ps1 | iex
+irm https://raw.githubusercontent.com/cidhorta/reparo-sistema/main/windows.ps1 | iex
 ```
 
 Esse comando é equivalente a baixar o script e executá-lo imediatamente. Deve ser usado em PowerShell aberto como Administrador.

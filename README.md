@@ -7,6 +7,7 @@ Scripts locais para diagnóstico e reparação controlada de computadores Window
 - [Documentação Windows](ReparoSistema/Windows/README.md)
 - [Documentação Ubuntu](ReparoSistema/Linux/README.md)
 - [Script Windows](ReparoSistema/Windows/ReparoSistema-Windows.ps1) — versão `1.1.0`
+- [Atalho remoto Windows](windows.ps1) — execução direta pela URL curta
 - [Script Ubuntu](ReparoSistema/Linux/reparo-sistema-linux.sh) — versão `1.0.0`
 - [Modelo de sudoers](ReparoSistema/Linux/sudoers-reparo-sistema.example)
 
@@ -28,3 +29,17 @@ Os logs usam `OK`, `FALHA`, `ALERTA` e `CORRIGIDO` quando aplicável. O resultad
 O script Windows foi executado nesta máquina em modo real, incluindo DISM, SFC, Windows Update, otimização e CHKDSK. O resultado foi `OK`, sem falhas e sem reinicialização pendente. A execução levou aproximadamente 36 minutos.
 
 Antes da distribuição, testar primeiro em uma máquina representativa de cada sistema operacional.
+
+## Execução rápida do Windows
+
+Em PowerShell como Administrador:
+
+```powershell
+irm https://raw.githubusercontent.com/cidhorta/reparo-sistema/main/windows.ps1 | iex
+```
+
+Para validar o acesso remoto sem executar reparos:
+
+```powershell
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/cidhorta/reparo-sistema/main/windows.ps1))) -Simulation
+```
