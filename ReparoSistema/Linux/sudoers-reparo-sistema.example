@@ -1,0 +1,8 @@
+# Ajustar o grupo/usuário e validar com: visudo -f /etc/sudoers.d/reparo-sistema
+# Confirme os caminhos com: command -v apt-get dpkg systemctl
+# A restrição de argumentos é intencional; não liberar os binários inteiros.
+Cmnd_Alias REPARO_APT = /usr/bin/apt-get update, /usr/bin/apt-get -y upgrade, /usr/bin/apt-get -f install -y, /usr/bin/apt-get autoremove -y, /usr/bin/apt-get clean
+Cmnd_Alias REPARO_DPKG = /usr/bin/dpkg --configure -a
+Cmnd_Alias REPARO_REBOOT = /usr/bin/systemctl reboot
+
+%reparo ALL=(root) NOPASSWD: REPARO_APT, REPARO_DPKG, REPARO_REBOOT

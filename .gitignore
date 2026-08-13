@@ -1,0 +1,23 @@
+# Logs gerados localmente pelos scripts
+*.log
+*.md.bak
+
+# Saídas de simulação e validação local
+/simulacao/
+
+# Logs Windows e Linux caso sejam copiados para o projeto
+/Logs/
+*.lock
+
+# Arquivos temporários de editores e sistema operacional
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+~$*
+
+# Configurações pessoais/locais
+.env
+.env.*
+!.env.example
+.vscode/settings.json
