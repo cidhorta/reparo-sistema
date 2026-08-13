@@ -42,6 +42,33 @@ Set-ExecutionPolicy -Scope Process Bypass
 & 'C:\Caminho\ReparoSistema-Windows.ps1'
 ```
 
+## Execução direta a partir do GitHub
+
+Forma direta, adequada apenas quando a versão publicada já foi revisada:
+
+```powershell
+irm https://raw.githubusercontent.com/cidhorta/reparo-sistema/main/ReparoSistema/Windows/ReparoSistema-Windows.ps1 | iex
+```
+
+Esse comando é equivalente a baixar o script e executá-lo imediatamente. Deve ser usado em PowerShell aberto como Administrador.
+
+Forma recomendada, permitindo inspeção antes da execução:
+
+```powershell
+$script = Join-Path $env:TEMP 'ReparoSistema-Windows.ps1'
+Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/cidhorta/reparo-sistema/main/ReparoSistema/Windows/ReparoSistema-Windows.ps1' -OutFile $script
+Get-Content -LiteralPath $script
+& $script
+```
+
+Para uma execução de simulação baixada do GitHub:
+
+```powershell
+& $script -Simulation
+```
+
+Em ambientes corporativos, prefira validar a versão por commit/hash ou distribuir o arquivo por uma ferramenta de gerenciamento. Não execute `irm | iex` de URLs não revisadas.
+
 Por padrão, o log é gravado em:
 
 ```text
